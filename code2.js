@@ -32,7 +32,7 @@ gdjs.Options_32PanelCode.mapOfGDgdjs_46Options_9532PanelCode_46GDNewSprite2Objec
 gdjs.Options_32PanelCode.mapOfGDgdjs_46Options_9532PanelCode_46GDNewSprite2Objects1Objects = Hashtable.newFrom({"NewSprite2": gdjs.Options_32PanelCode.GDNewSprite2Objects1});
 gdjs.Options_32PanelCode.mapOfGDgdjs_46Options_9532PanelCode_46GDNewSprite2Objects1Objects = Hashtable.newFrom({"NewSprite2": gdjs.Options_32PanelCode.GDNewSprite2Objects1});
 gdjs.Options_32PanelCode.mapOfGDgdjs_46Options_9532PanelCode_46GDNewSprite2Objects1Objects = Hashtable.newFrom({"NewSprite2": gdjs.Options_32PanelCode.GDNewSprite2Objects1});
-gdjs.Options_32PanelCode.asyncCallback16958244 = function (runtimeScene, asyncObjectsList) {
+gdjs.Options_32PanelCode.asyncCallback16241412 = function (runtimeScene, asyncObjectsList) {
 {gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "Main Menu", false);
 }}
 gdjs.Options_32PanelCode.eventsList0 = function(runtimeScene) {
@@ -43,7 +43,7 @@ gdjs.Options_32PanelCode.eventsList0 = function(runtimeScene) {
 {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.2), (runtimeScene) => (gdjs.Options_32PanelCode.asyncCallback16958244(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.2), (runtimeScene) => (gdjs.Options_32PanelCode.asyncCallback16241412(runtimeScene, asyncObjectsList)));
 }
 }
 
@@ -58,7 +58,7 @@ runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.2)
 gdjs.Options_32PanelCode.condition0IsTrue_0.val = false;
 {
 {gdjs.Options_32PanelCode.conditionTrue_1 = gdjs.Options_32PanelCode.condition0IsTrue_0;
-gdjs.Options_32PanelCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16925508);
+gdjs.Options_32PanelCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16208676);
 }
 }if (gdjs.Options_32PanelCode.condition0IsTrue_0.val) {
 {gdjs.evtTools.sound.playMusicOnChannel(runtimeScene, "Optionswav.wav", 1, false, 100, 1);
@@ -77,7 +77,7 @@ gdjs.Options_32PanelCode.condition0IsTrue_0.val = gdjs.evtTools.sound.isMusicOnC
 }if ( gdjs.Options_32PanelCode.condition0IsTrue_0.val ) {
 {
 {gdjs.Options_32PanelCode.conditionTrue_1 = gdjs.Options_32PanelCode.condition1IsTrue_0;
-gdjs.Options_32PanelCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16925580);
+gdjs.Options_32PanelCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16208748);
 }
 }}
 if (gdjs.Options_32PanelCode.condition1IsTrue_0.val) {
@@ -175,7 +175,7 @@ gdjs.Options_32PanelCode.GDFullScreenObjects1.length = k;}if (gdjs.Options_32Pan
 gdjs.Options_32PanelCode.condition0IsTrue_0.val = false;
 {
 {gdjs.Options_32PanelCode.conditionTrue_1 = gdjs.Options_32PanelCode.condition0IsTrue_0;
-gdjs.Options_32PanelCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16953244);
+gdjs.Options_32PanelCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16236412);
 }
 }if (gdjs.Options_32PanelCode.condition0IsTrue_0.val) {
 gdjs.copyArray(runtimeScene.getObjects("Closing"), gdjs.Options_32PanelCode.GDClosingObjects1);

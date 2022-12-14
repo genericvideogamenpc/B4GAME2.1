@@ -16,7 +16,7 @@ gdjs.StoryCode.condition2IsTrue_1 = {val:false};
 gdjs.StoryCode.condition3IsTrue_1 = {val:false};
 
 
-gdjs.StoryCode.asyncCallback16979788 = function (runtimeScene, asyncObjectsList) {
+gdjs.StoryCode.asyncCallback16262956 = function (runtimeScene, asyncObjectsList) {
 gdjs.copyArray(asyncObjectsList.getObjects("NewText"), gdjs.StoryCode.GDNewTextObjects2);
 
 gdjs.copyArray(runtimeScene.getObjects("NewText2"), gdjs.StoryCode.GDNewText2Objects2);
@@ -36,7 +36,7 @@ gdjs.StoryCode.eventsList0 = function(runtimeScene) {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 for (const obj of gdjs.StoryCode.GDNewTextObjects1) asyncObjectsList.addObject("NewText", obj);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(3), (runtimeScene) => (gdjs.StoryCode.asyncCallback16979788(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(3), (runtimeScene) => (gdjs.StoryCode.asyncCallback16262956(runtimeScene, asyncObjectsList)));
 }
 }
 
@@ -62,7 +62,7 @@ for(var i = 0, k = 0, l = gdjs.StoryCode.GDNewTextObjects1.length;i<l;++i) {
 gdjs.StoryCode.GDNewTextObjects1.length = k;}if ( gdjs.StoryCode.condition0IsTrue_0.val ) {
 {
 {gdjs.StoryCode.conditionTrue_1 = gdjs.StoryCode.condition1IsTrue_0;
-gdjs.StoryCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16979484);
+gdjs.StoryCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16262652);
 }
 }}
 if (gdjs.StoryCode.condition1IsTrue_0.val) {
@@ -95,7 +95,7 @@ for(var i = 0, k = 0, l = gdjs.StoryCode.GDNewTextObjects1.length;i<l;++i) {
 gdjs.StoryCode.GDNewTextObjects1.length = k;}if ( gdjs.StoryCode.condition1IsTrue_0.val ) {
 {
 {gdjs.StoryCode.conditionTrue_1 = gdjs.StoryCode.condition2IsTrue_0;
-gdjs.StoryCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16980404);
+gdjs.StoryCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16263572);
 }
 }}
 }
