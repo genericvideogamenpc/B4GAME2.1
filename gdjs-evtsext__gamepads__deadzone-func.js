@@ -1,34 +1,50 @@
 
-if (typeof gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed !== "undefined") {
-  gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.registeredGdjsCallbacks.forEach(callback =>
+if (typeof gdjs.evtsExt__Gamepads__Deadzone !== "undefined") {
+  gdjs.evtsExt__Gamepads__Deadzone.registeredGdjsCallbacks.forEach(callback =>
     gdjs._unregisterCallback(callback)
   );
 }
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed = {};
+gdjs.evtsExt__Gamepads__Deadzone = {};
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.conditionTrue_0 = {val:false};
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.condition0IsTrue_0 = {val:false};
+gdjs.evtsExt__Gamepads__Deadzone.conditionTrue_0 = {val:false};
+gdjs.evtsExt__Gamepads__Deadzone.condition0IsTrue_0 = {val:false};
 
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.userFunc0x859890 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__Gamepads__Deadzone.userFunc0xb4eef0 = function(runtimeScene, eventsFunctionContext) {
 "use strict";
-eventsFunctionContext.returnValue = runtimeScene.getGame().getInputManager()._touches.firstKey() !== null;
+//Get function parameter
+const playerId = eventsFunctionContext.getArgument("player_ID") - 1;
 
+if (playerId < 0 || playerId > 4) {
+    console.error('Parameter gamepad identifier in expression: "Gamepad deadzone for sticks", is not valid number, must be between 0 and 4.');
+    return;
+}
+///Return the deadzone value for a given player
+eventsFunctionContext.returnValue = gdjs._extensionController.players[playerId].deadzone;
 };
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.eventsList0 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__Gamepads__Deadzone.eventsList0 = function(runtimeScene, eventsFunctionContext) {
 
 {
 
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.userFunc0x859890(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
+{
+}
+
+}
+
+
+{
+
+
+gdjs.evtsExt__Gamepads__Deadzone.userFunc0xb4eef0(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
 
 }
 
 
 };
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.func = function(runtimeScene, parentEventsFunctionContext) {
+gdjs.evtsExt__Gamepads__Deadzone.func = function(runtimeScene, player_ID, parentEventsFunctionContext) {
 var eventsFunctionContext = {
   _objectsMap: {
 },
@@ -73,15 +89,16 @@ parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
     return runtimeScene.getLayer(layerName);
   },
   getArgument: function(argName) {
+if (argName === "player_ID") return player_ID;
     return "";
   },
   getOnceTriggers: function() { return runtimeScene.getOnceTriggers(); }
 };
 
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.eventsList0(runtimeScene, eventsFunctionContext);
+gdjs.evtsExt__Gamepads__Deadzone.eventsList0(runtimeScene, eventsFunctionContext);
 
-return !!eventsFunctionContext.returnValue;
+return Number(eventsFunctionContext.returnValue) || 0;
 }
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.registeredGdjsCallbacks = [];
+gdjs.evtsExt__Gamepads__Deadzone.registeredGdjsCallbacks = [];

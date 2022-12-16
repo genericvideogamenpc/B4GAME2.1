@@ -1,17 +1,17 @@
 
-if (typeof gdjs.evtsExt__Gamepads__C_Button_pressed !== "undefined") {
-  gdjs.evtsExt__Gamepads__C_Button_pressed.registeredGdjsCallbacks.forEach(callback =>
+if (typeof gdjs.evtsExt__Gamepads__C_Button_released !== "undefined") {
+  gdjs.evtsExt__Gamepads__C_Button_released.registeredGdjsCallbacks.forEach(callback =>
     gdjs._unregisterCallback(callback)
   );
 }
 
-gdjs.evtsExt__Gamepads__C_Button_pressed = {};
+gdjs.evtsExt__Gamepads__C_Button_released = {};
 
-gdjs.evtsExt__Gamepads__C_Button_pressed.conditionTrue_0 = {val:false};
-gdjs.evtsExt__Gamepads__C_Button_pressed.condition0IsTrue_0 = {val:false};
+gdjs.evtsExt__Gamepads__C_Button_released.conditionTrue_0 = {val:false};
+gdjs.evtsExt__Gamepads__C_Button_released.condition0IsTrue_0 = {val:false};
 
 
-gdjs.evtsExt__Gamepads__C_Button_pressed.userFunc0xb4eef0 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__Gamepads__C_Button_released.userFunc0xb4eef0 = function(runtimeScene, eventsFunctionContext) {
 "use strict";
 /** @type {Gamepad[]} */
 const gamepads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : []);
@@ -21,12 +21,11 @@ const playerId = eventsFunctionContext.getArgument("player_ID") - 1;
 const button = eventsFunctionContext.getArgument("button").toUpperCase();
 
 if (playerId < 0 || playerId > 4) {
-    console.error('Parameter gamepad identifier in condition: "Gamepad button pressed", is not valid number, must be between 0 and 4.');
+    console.error('Parameter gamepad identifier in condition: "Gamepad button released", is not valid number, must be between 0 and 4.');
     return;
 }
 if (button === "") {
-    console.error('Parameter button is not valid in condition: "Gamepad button pressed"');
-    eventsFunctionContext.returnValue = false;
+    console.error('Parameter button is not valid in condition: "Gamepad button released"');
     return;
 }
 
@@ -109,46 +108,55 @@ switch (button) {
         break;
 
     default:
-        console.error('The button: ' + button + ' in condition: "Gamepad button pressed" is not valid.');
-        eventsFunctionContext.returnValue = false;
+        console.error('The button: ' + button + ' in condition: "Gamepad button released" is not valid.');
         break;
 }
 
-
-
 if (buttonId === undefined) {
-    console.error('There is no buttons valid in condition: "Gamepad button pressed"');
+    console.error('There is no buttons valid in condition: "Gamepad button released"');
     eventsFunctionContext.returnValue = false;
     return;
 }
 
 if (gamepad.buttons == null || gamepad.buttons[buttonId] == null) {
-    console.error('Buttons on the gamepad are not accessible in condition: "Gamepad button pressed"');
+    console.error('Buttons on the gamepad are not accessible in condition: "Gamepad button released"');
     eventsFunctionContext.returnValue = false;
     return;
 }
 
-//When a button is pressed, save the button in lastButtonUsed for each players
-if (gamepad.buttons[buttonId].pressed) gdjs._extensionController.players[playerId].lastButtonUsed = buttonId;
-eventsFunctionContext.returnValue = gamepad.buttons[buttonId].pressed;
+//Define default value on pressed button or use previous value
+gdjs._extensionController.players[playerId].previousFrameStateButtons[buttonId] = gdjs._extensionController.players[playerId].previousFrameStateButtons[buttonId] || { pressed: false };
 
+//Get state of button at previous frame
+const previousStateButton = gdjs._extensionController.players[playerId].previousFrameStateButtons[buttonId].pressed;
 
+//When previousStateButton is true and actual button state is not pressed
+//Player have release the button
+if (previousStateButton === true && gamepad.buttons[buttonId].pressed === false) {
+    // Save the last button used for the player    
+    gdjs._extensionController.players[playerId].lastButtonUsed = buttonId;
+    gdjs._extensionController.players[playerId].previousFrameStateButtons[buttonId].pressed = true;
+    eventsFunctionContext.returnValue = true;
 
+} else {
+    gdjs._extensionController.players[playerId].previousFrameStateButtons[buttonId].pressed = false;
+    eventsFunctionContext.returnValue = false;
+}
 
 };
-gdjs.evtsExt__Gamepads__C_Button_pressed.eventsList0 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__Gamepads__C_Button_released.eventsList0 = function(runtimeScene, eventsFunctionContext) {
 
 {
 
 
-gdjs.evtsExt__Gamepads__C_Button_pressed.userFunc0xb4eef0(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
+gdjs.evtsExt__Gamepads__C_Button_released.userFunc0xb4eef0(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
 
 }
 
 
 };
 
-gdjs.evtsExt__Gamepads__C_Button_pressed.func = function(runtimeScene, player_ID, button, parentEventsFunctionContext) {
+gdjs.evtsExt__Gamepads__C_Button_released.func = function(runtimeScene, player_ID, button, parentEventsFunctionContext) {
 var eventsFunctionContext = {
   _objectsMap: {
 },
@@ -201,9 +209,9 @@ if (argName === "button") return button;
 };
 
 
-gdjs.evtsExt__Gamepads__C_Button_pressed.eventsList0(runtimeScene, eventsFunctionContext);
+gdjs.evtsExt__Gamepads__C_Button_released.eventsList0(runtimeScene, eventsFunctionContext);
 
 return !!eventsFunctionContext.returnValue;
 }
 
-gdjs.evtsExt__Gamepads__C_Button_pressed.registeredGdjsCallbacks = [];
+gdjs.evtsExt__Gamepads__C_Button_released.registeredGdjsCallbacks = [];

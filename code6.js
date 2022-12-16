@@ -43,7 +43,7 @@ gdjs.copyArray(runtimeScene.getObjects("NewText3"), gdjs.CreditsCode.GDNewText3O
 gdjs.CreditsCode.condition0IsTrue_0.val = false;
 {
 {gdjs.CreditsCode.conditionTrue_1 = gdjs.CreditsCode.condition0IsTrue_0;
-gdjs.CreditsCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16675164);
+gdjs.CreditsCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16704068);
 }
 }if (gdjs.CreditsCode.condition0IsTrue_0.val) {
 gdjs.copyArray(runtimeScene.getObjects("Cover"), gdjs.CreditsCode.GDCoverObjects1);
@@ -86,7 +86,7 @@ for(var i = 0, k = 0, l = gdjs.CreditsCode.GDCoverObjects1.length;i<l;++i) {
 gdjs.CreditsCode.GDCoverObjects1.length = k;}if ( gdjs.CreditsCode.condition2IsTrue_0.val ) {
 {
 {gdjs.CreditsCode.conditionTrue_1 = gdjs.CreditsCode.condition3IsTrue_0;
-gdjs.CreditsCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16677100);
+gdjs.CreditsCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16706004);
 }
 }}
 }

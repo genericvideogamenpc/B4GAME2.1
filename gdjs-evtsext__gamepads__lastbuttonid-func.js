@@ -1,34 +1,43 @@
 
-if (typeof gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed !== "undefined") {
-  gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.registeredGdjsCallbacks.forEach(callback =>
+if (typeof gdjs.evtsExt__Gamepads__LastButtonID !== "undefined") {
+  gdjs.evtsExt__Gamepads__LastButtonID.registeredGdjsCallbacks.forEach(callback =>
     gdjs._unregisterCallback(callback)
   );
 }
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed = {};
+gdjs.evtsExt__Gamepads__LastButtonID = {};
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.conditionTrue_0 = {val:false};
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.condition0IsTrue_0 = {val:false};
+gdjs.evtsExt__Gamepads__LastButtonID.conditionTrue_0 = {val:false};
+gdjs.evtsExt__Gamepads__LastButtonID.condition0IsTrue_0 = {val:false};
 
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.userFunc0x859890 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__Gamepads__LastButtonID.userFunc0xb4eef0 = function(runtimeScene, eventsFunctionContext) {
 "use strict";
-eventsFunctionContext.returnValue = runtimeScene.getGame().getInputManager()._touches.firstKey() !== null;
+//Get function parameter
+const playerId = eventsFunctionContext.getArgument("player_ID") - 1;
 
+//Player id is not valid
+if (playerId < 0 || playerId > 4) {
+    console.error('Parameter gamepad identifier in expression: "Last pressed button (id)", is not valid number, must be between 0 and 4.');
+    return;
+}
+
+//Return the last button used by the player
+eventsFunctionContext.returnValue = gdjs._extensionController.players[playerId].lastButtonUsed;
 };
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.eventsList0 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__Gamepads__LastButtonID.eventsList0 = function(runtimeScene, eventsFunctionContext) {
 
 {
 
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.userFunc0x859890(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
+gdjs.evtsExt__Gamepads__LastButtonID.userFunc0xb4eef0(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
 
 }
 
 
 };
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.func = function(runtimeScene, parentEventsFunctionContext) {
+gdjs.evtsExt__Gamepads__LastButtonID.func = function(runtimeScene, player_ID, parentEventsFunctionContext) {
 var eventsFunctionContext = {
   _objectsMap: {
 },
@@ -73,15 +82,16 @@ parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
     return runtimeScene.getLayer(layerName);
   },
   getArgument: function(argName) {
+if (argName === "player_ID") return player_ID;
     return "";
   },
   getOnceTriggers: function() { return runtimeScene.getOnceTriggers(); }
 };
 
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.eventsList0(runtimeScene, eventsFunctionContext);
+gdjs.evtsExt__Gamepads__LastButtonID.eventsList0(runtimeScene, eventsFunctionContext);
 
-return !!eventsFunctionContext.returnValue;
+return Number(eventsFunctionContext.returnValue) || 0;
 }
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.registeredGdjsCallbacks = [];
+gdjs.evtsExt__Gamepads__LastButtonID.registeredGdjsCallbacks = [];

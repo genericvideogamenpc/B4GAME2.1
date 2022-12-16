@@ -1,34 +1,47 @@
 
-if (typeof gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed !== "undefined") {
-  gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.registeredGdjsCallbacks.forEach(callback =>
+if (typeof gdjs.evtsExt__Gamepads__ConnectedGamepadsCount !== "undefined") {
+  gdjs.evtsExt__Gamepads__ConnectedGamepadsCount.registeredGdjsCallbacks.forEach(callback =>
     gdjs._unregisterCallback(callback)
   );
 }
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed = {};
+gdjs.evtsExt__Gamepads__ConnectedGamepadsCount = {};
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.conditionTrue_0 = {val:false};
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.condition0IsTrue_0 = {val:false};
+gdjs.evtsExt__Gamepads__ConnectedGamepadsCount.conditionTrue_0 = {val:false};
+gdjs.evtsExt__Gamepads__ConnectedGamepadsCount.condition0IsTrue_0 = {val:false};
 
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.userFunc0x859890 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__Gamepads__ConnectedGamepadsCount.userFunc0xb4eef0 = function(runtimeScene, eventsFunctionContext) {
 "use strict";
-eventsFunctionContext.returnValue = runtimeScene.getGame().getInputManager()._touches.firstKey() !== null;
+/** @type {Gamepad[]} */
+const gamepads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : []);
+
+// Gamepads can be disconnected and become null, so we have to filter them.
+eventsFunctionContext.returnValue = Object.keys(gamepads).filter(key => !!gamepads[key]).length;
 
 };
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.eventsList0 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__Gamepads__ConnectedGamepadsCount.eventsList0 = function(runtimeScene, eventsFunctionContext) {
 
 {
 
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.userFunc0x859890(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
+{
+}
+
+}
+
+
+{
+
+
+gdjs.evtsExt__Gamepads__ConnectedGamepadsCount.userFunc0xb4eef0(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
 
 }
 
 
 };
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.func = function(runtimeScene, parentEventsFunctionContext) {
+gdjs.evtsExt__Gamepads__ConnectedGamepadsCount.func = function(runtimeScene, parentEventsFunctionContext) {
 var eventsFunctionContext = {
   _objectsMap: {
 },
@@ -79,9 +92,9 @@ parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
 };
 
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.eventsList0(runtimeScene, eventsFunctionContext);
+gdjs.evtsExt__Gamepads__ConnectedGamepadsCount.eventsList0(runtimeScene, eventsFunctionContext);
 
-return !!eventsFunctionContext.returnValue;
+return Number(eventsFunctionContext.returnValue) || 0;
 }
 
-gdjs.evtsExt__PanelSpriteButton__AnyTouchPressed.registeredGdjsCallbacks = [];
+gdjs.evtsExt__Gamepads__ConnectedGamepadsCount.registeredGdjsCallbacks = [];

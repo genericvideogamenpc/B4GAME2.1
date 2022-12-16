@@ -9,7 +9,7 @@ gdjs.Focus_32the_32Game_32MenuCode.condition0IsTrue_0 = {val:false};
 gdjs.Focus_32the_32Game_32MenuCode.condition1IsTrue_0 = {val:false};
 
 
-gdjs.Focus_32the_32Game_32MenuCode.asyncCallback16165692 = function (runtimeScene, asyncObjectsList) {
+gdjs.Focus_32the_32Game_32MenuCode.asyncCallback16193300 = function (runtimeScene, asyncObjectsList) {
 {gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "Main Menu", false);
 }}
 gdjs.Focus_32the_32Game_32MenuCode.eventsList0 = function(runtimeScene) {
@@ -20,7 +20,7 @@ gdjs.Focus_32the_32Game_32MenuCode.eventsList0 = function(runtimeScene) {
 {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(2), (runtimeScene) => (gdjs.Focus_32the_32Game_32MenuCode.asyncCallback16165692(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(2), (runtimeScene) => (gdjs.Focus_32the_32Game_32MenuCode.asyncCallback16193300(runtimeScene, asyncObjectsList)));
 }
 }
 
